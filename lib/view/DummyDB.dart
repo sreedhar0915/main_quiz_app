@@ -1,4 +1,30 @@
 class Dummydb {
+  static List categorylist = [
+    {
+      "categoryname": "Sports",
+      "categoryimage": "Assets/images/sports-removebg-preview.png",
+    },
+    {
+      "categoryname": "Chemistry",
+      "categoryimage": "Assets/images/chemistry-removebg-preview.png",
+    },
+    {
+      "categoryname": "Mathematics",
+      "categoryimage": "Assets/images/maths-removebg-preview.png",
+    },
+    {
+      "categoryname": "History",
+      "categoryimage": "Assets/images/history-removebg-preview.png",
+    },
+    {
+      "categoryname": "Biology",
+      "categoryimage": "Assets/images/biological-removebg-preview.png",
+    },
+    {
+      "categoryname": "Geography",
+      "categoryimage": "Assets/images/geography-removebg-preview.png",
+    }
+  ];
   static List<Map<String, dynamic>> Sportslist = [
     {
       "questions": "What is the national sport of Canada?",

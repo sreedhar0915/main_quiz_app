@@ -1,12 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:main_quiz_app/view/DummyDB.dart';
 import 'package:main_quiz_app/view/resultscreen/Resultscreen.dart';
 
 class Quizscreen extends StatefulWidget {
-  final String category;
-  const Quizscreen({super.key, required this.category});
+  final String item;
+  const Quizscreen({super.key, required this.item});
 
   @override
   State<Quizscreen> createState() => _QuizscreenState();
@@ -22,26 +22,26 @@ class _QuizscreenState extends State<Quizscreen> {
   @override
   void initState() {
     starttimer();
-    categorys();
+    item();
     super.initState();
   }
 
-  void categorys() {
-    print(widget.category);
-    if (widget.category == "sports") {
+  void item() {
+    print(widget.item);
+    if (widget.item == "Sports") {
       categorylist = Dummydb.Sportslist;
-    } else if (widget.category == "Chemistry") {
+    } else if (widget.item == "Chemistry") {
       categorylist = Dummydb.ChemistryList;
-    } else if (widget.category == "Mathematics") {
+    } else if (widget.item == "Mathematics") {
       categorylist = Dummydb.MathematicsList;
-    } else if (widget.category == "History") {
+    } else if (widget.item == "History") {
       categorylist = Dummydb.HistoryList;
-    } else if (widget.category == "Biology") {
+    } else if (widget.item == "Biology") {
       categorylist = Dummydb.BiologyList;
-    } else
-      () {
-        categorylist = Dummydb.GeographyList;
-      };
+    } else if (widget.item == "Geography") {
+      categorylist = Dummydb.GeographyList;
+    }
+    ;
   }
 
   void starttimer() {
@@ -90,7 +90,7 @@ class _QuizscreenState extends State<Quizscreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Text("${currentindex + 1} / ${Dummydb.Sportslist.length}",
+            child: Text("${currentindex + 1} / ${categorylist.length}",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -133,18 +133,21 @@ class _QuizscreenState extends State<Quizscreen> {
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey,
                       ),
-                      child: Center(
-                          child: Text(
-                        Dummydb.Sportslist[currentindex]["questions"],
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      )),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Center(
+                            child: Text(
+                          categorylist[currentindex]["questions"],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        )),
+                      ),
                     ),
                     // if (selectedanswerindex ==
-                    //     Dummydb.Questionlist[currentindex]["answerindex"])
+                    //     Dummydb.Sportslist[currentindex]["answerindex"])
                     //   Center(
                     //     child: Lottie.asset(
-                    //         AnimationConstant.rightansweranimation,
+                    //         ""
                     //         fit: BoxFit.cover),
                     //   ),
                   ],
@@ -154,47 +157,47 @@ class _QuizscreenState extends State<Quizscreen> {
             SizedBox(height: 20),
             Column(
                 children: List.generate(
-                    Dummydb.Sportslist[currentindex]["options"].length,
-                    (optionindex) {
-              return Padding(
-                padding: const EdgeInsets.all(10),
-                child: InkWell(
-                  onTap: () {
-                    if (selectedanswerindex == null) {
-                      selectedanswerindex = optionindex;
-                      setState(() {
-                        if (optionindex ==
-                            Dummydb.Sportslist[currentindex]["answerindex"]) {
-                          rightanswercount++;
-                        }
-                      });
-                    }
-                  },
-                  child: Container(
-                    height: 50,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(10),
-                        border:
-                            Border.all(color: getColor(optionindex), width: 2)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        children: [
-                          Text(
-                              Dummydb.Sportslist[currentindex]["options"]
-                                  [optionindex],
-                              style: TextStyle(color: Colors.white)),
-                          Spacer(),
-                          Icon(Icons.circle_outlined, color: Colors.grey),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            })),
+                    categorylist[currentindex]["options"].length,
+                    (optionindex) => Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: InkWell(
+                            onTap: () {
+                              if (selectedanswerindex == null) {
+                                selectedanswerindex = optionindex;
+                                setState(() {
+                                  if (optionindex ==
+                                      categorylist[currentindex]
+                                          ["answerindex"]) {
+                                    rightanswercount++;
+                                  }
+                                });
+                              }
+                            },
+                            child: Container(
+                              height: 50,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                      color: getColor(optionindex), width: 2)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                        categorylist[currentindex]["options"]
+                                            [optionindex],
+                                        style: TextStyle(color: Colors.white)),
+                                    Spacer(),
+                                    Icon(Icons.circle_outlined,
+                                        color: Colors.grey),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ))),
             SizedBox(
               height: 20,
             ),
@@ -204,7 +207,7 @@ class _QuizscreenState extends State<Quizscreen> {
                   setState(() {});
 
                   selectedanswerindex = null;
-                  if (currentindex < Dummydb.Sportslist.length - 1) {
+                  if (currentindex < categorylist.length - 1) {
                     currentindex++;
                   } else {
                     Navigator.pushReplacement(
@@ -239,12 +242,11 @@ class _QuizscreenState extends State<Quizscreen> {
 
   Color getColor(int currentoptionindex) {
     if (selectedanswerindex != null &&
-        currentoptionindex == Dummydb.Sportslist[currentindex]["answerindex"]) {
+        currentoptionindex == categorylist[currentindex]["answerindex"]) {
       return Colors.green;
     }
     if (selectedanswerindex == currentoptionindex) {
-      if (selectedanswerindex ==
-          Dummydb.Sportslist[currentindex]["answerindex"]) {
+      if (selectedanswerindex == categorylist[currentindex]["answerindex"]) {
         return Colors.green;
       } else {
         return Colors.red;

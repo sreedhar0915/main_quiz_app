@@ -65,8 +65,7 @@ class _ResultscreenState extends State<Resultscreen> {
           SizedBox(height: 5),
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Text(
-                "${widget.rightanswercount} / ${Dummydb.Sportslist.length}",
+            child: Text("${widget.rightanswercount} / 10",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
@@ -82,7 +81,7 @@ class _ResultscreenState extends State<Resultscreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => Quizscreen(
-                          category: "category",
+                          item: "category",
                         ),
                       ));
                 });
