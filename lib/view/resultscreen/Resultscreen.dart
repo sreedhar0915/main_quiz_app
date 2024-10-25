@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:main_quiz_app/view/DummyDB.dart';
 import 'package:main_quiz_app/view/Homescreen/Homescreen.dart';
 import 'package:main_quiz_app/view/Quizscreen/Quizscreen.dart';
+import 'package:main_quiz_app/view/Utils/constants/color_constants/color_constants.dart';
 
 class Resultscreen extends StatefulWidget {
   const Resultscreen({super.key, required this.rightanswercount});
@@ -91,7 +92,7 @@ class _ResultscreenState extends State<Resultscreen> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
+                  color: ColorConstants.white,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -102,9 +103,11 @@ class _ResultscreenState extends State<Resultscreen> {
                         CircleAvatar(
                             radius: 30,
                             backgroundColor: Colors.black,
-                            child: Icon(Icons.replay, color: Colors.white)),
+                            child: Icon(Icons.replay,
+                                color: ColorConstants.white)),
                         SizedBox(width: 20),
-                        Text("RETRY", style: TextStyle(color: Colors.black)),
+                        Text("RETRY",
+                            style: TextStyle(color: ColorConstants.black)),
                       ],
                     ),
                   ),
@@ -130,7 +133,7 @@ class _ResultscreenState extends State<Resultscreen> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
+                  color: ColorConstants.white,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -141,10 +144,11 @@ class _ResultscreenState extends State<Resultscreen> {
                         CircleAvatar(
                             radius: 30,
                             backgroundColor: Colors.black,
-                            child: Icon(Icons.replay, color: Colors.white)),
+                            child: Icon(Icons.replay,
+                                color: ColorConstants.white)),
                         SizedBox(width: 20),
                         Text("OTHER SECTIONS",
-                            style: TextStyle(color: Colors.black)),
+                            style: TextStyle(color: ColorConstants.black)),
                       ],
                     ),
                   ),

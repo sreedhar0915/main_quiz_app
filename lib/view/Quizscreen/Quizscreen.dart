@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:lottie/lottie.dart';
+import 'package:main_quiz_app/Utilis/color_constants.dart';
 import 'package:main_quiz_app/view/DummyDB.dart';
 import 'package:main_quiz_app/view/resultscreen/Resultscreen.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class Quizscreen extends StatefulWidget {
   final String item;
@@ -87,6 +90,17 @@ class _QuizscreenState extends State<Quizscreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
+        title: LinearPercentIndicator(
+          width: 300,
+          lineHeight: 20,
+          percent: (currentindex + 1) / categorylist.length,
+          center: Text(""),
+          // "${((currentindex + 1) / categorylist.length * 100).tostringasfixed(1)}%"),
+          backgroundColor: Colors.grey[300],
+          progressColor: Colors.blue,
+          barRadius: Radius.circular(10),
+          animation: true,
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.all(10),
@@ -106,12 +120,12 @@ class _QuizscreenState extends State<Quizscreen> {
               alignment: Alignment.center,
               children: [
                 CircleAvatar(
-                  backgroundColor: Colors.red,
+                  backgroundColor: ColorConstants.red,
                   radius: 30,
                   child: CircularProgressIndicator(
                     value: remainingtime / 30,
                     backgroundColor: Colors.black,
-                    color: Colors.grey,
+                    color: ColorConstants.grey,
                   ),
                 ),
                 Text(
@@ -119,7 +133,7 @@ class _QuizscreenState extends State<Quizscreen> {
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                      color: ColorConstants.black),
                 )
               ],
             ),
@@ -131,7 +145,7 @@ class _QuizscreenState extends State<Quizscreen> {
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: ColorConstants.grey,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -144,11 +158,10 @@ class _QuizscreenState extends State<Quizscreen> {
                       ),
                     ),
                     // if (selectedanswerindex ==
-                    //     Dummydb.Sportslist[currentindex]["answerindex"])
+                    //     categorylist[currentindex]["answerindex"])
                     //   Center(
                     //     child: Lottie.asset(
-                    //         ""
-                    //         fit: BoxFit.cover),
+                    //         "Assets/Animations/Animation - 1729829786990.json"),
                     //   ),
                   ],
                 ),
@@ -177,7 +190,7 @@ class _QuizscreenState extends State<Quizscreen> {
                               height: 50,
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                  color: Colors.black,
+                                  color: ColorConstants.black,
                                   borderRadius: BorderRadius.circular(10),
                                   border: Border.all(
                                       color: getColor(optionindex), width: 2)),
@@ -188,10 +201,11 @@ class _QuizscreenState extends State<Quizscreen> {
                                     Text(
                                         categorylist[currentindex]["options"]
                                             [optionindex],
-                                        style: TextStyle(color: Colors.white)),
+                                        style: TextStyle(
+                                            color: ColorConstants.white)),
                                     Spacer(),
                                     Icon(Icons.circle_outlined,
-                                        color: Colors.grey),
+                                        color: ColorConstants.grey),
                                   ],
                                 ),
                               ),
@@ -230,7 +244,8 @@ class _QuizscreenState extends State<Quizscreen> {
                       child: Text(
                     "Next",
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                        color: ColorConstants.black,
+                        fontWeight: FontWeight.bold),
                   )),
                 ),
               ),
@@ -243,16 +258,16 @@ class _QuizscreenState extends State<Quizscreen> {
   Color getColor(int currentoptionindex) {
     if (selectedanswerindex != null &&
         currentoptionindex == categorylist[currentindex]["answerindex"]) {
-      return Colors.green;
+      return ColorConstants.green;
     }
     if (selectedanswerindex == currentoptionindex) {
       if (selectedanswerindex == categorylist[currentindex]["answerindex"]) {
-        return Colors.green;
+        return ColorConstants.green;
       } else {
-        return Colors.red;
+        return ColorConstants.red;
       }
     } else {
-      return Colors.grey;
+      return ColorConstants.grey;
     }
   }
 }
