@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main_quiz_app/view/Utils/constants/color_constants/color_constants.dart';
+import 'package:main_quiz_app/Utilis/color_constants.dart';
 
 class Categorycontainer extends StatelessWidget {
   final String categoryimages;
@@ -17,30 +17,30 @@ class Categorycontainer extends StatelessWidget {
     return InkWell(
       onTap: oncategorytap,
       child: Container(
-        height: 110,
+        height: 300,
         width: 200,
         decoration: BoxDecoration(
-          color: ColorConstants.grey,
-          border: Border.all(color: ColorConstants.blue),
-          borderRadius: BorderRadius.circular(15),
+          color: const Color(0xFF677CE6),
+          border: Border.all(color: ColorConstants.maincolor),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
         ),
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              SizedBox(height: 20),
               Container(
-                height: 200,
+                height: 120,
                 width: 180,
                 child: Image(
                   image: AssetImage(categoryimages),
                   fit: BoxFit.cover,
                 ),
               ),
-              Spacer(),
+              SizedBox(height: 5),
               Text(categorynames,
                   style: TextStyle(
-                      color: ColorConstants.black,
+                      color: ColorConstants.headingcolor,
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
               SizedBox(height: 10),

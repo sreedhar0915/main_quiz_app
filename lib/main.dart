@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main_quiz_app/view/loginscreen/loginscreen.dart';
+import 'package:main_quiz_app/view/Splashscreen/splashscreen.dart';
 
 void main(List<String> args) {
   runApp(Myapp());
@@ -12,9 +12,12 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Loginscreen(),
+      home: Splashscreen(),
     );
   }
 }
 
 String Username = '';
+String email = '';
+String password = '';
+String Phonenumber = '';

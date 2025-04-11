@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:main_quiz_app/Utilis/color_constants.dart';
 import 'package:main_quiz_app/view/DummyDB.dart';
-import 'package:main_quiz_app/view/Homescreen/Homescreen.dart';
+import 'package:main_quiz_app/view/Homescreen/Categoryscreen.dart';
 import 'package:main_quiz_app/view/Quizscreen/Quizscreen.dart';
-import 'package:main_quiz_app/view/Utils/constants/color_constants/color_constants.dart';
 
 class Resultscreen extends StatefulWidget {
   const Resultscreen({super.key, required this.rightanswercount});
@@ -38,7 +38,7 @@ class _ResultscreenState extends State<Resultscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: ColorConstants.black,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -49,7 +49,9 @@ class _ResultscreenState extends State<Resultscreen> {
                 3,
                 (index) => Icon(
                       Icons.star,
-                      color: index < starcount ? Colors.amber : Colors.grey,
+                      color: index < starcount
+                          ? ColorConstants.yellow
+                          : ColorConstants.maincolor,
                       size: index == 1 ? 80 : 40,
                     )),
           ),
@@ -62,7 +64,7 @@ class _ResultscreenState extends State<Resultscreen> {
               )),
           SizedBox(height: 20),
           Text("Your Score",
-              style: TextStyle(color: Colors.white, fontSize: 15)),
+              style: TextStyle(color: ColorConstants.maincolor, fontSize: 15)),
           SizedBox(height: 5),
           Padding(
             padding: const EdgeInsets.all(10),
@@ -70,7 +72,7 @@ class _ResultscreenState extends State<Resultscreen> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
-                    color: Colors.amber)),
+                    color: ColorConstants.yellow)),
           ),
           SizedBox(height: 30),
           Padding(
@@ -82,7 +84,7 @@ class _ResultscreenState extends State<Resultscreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => Quizscreen(
-                          item: "category",
+                          item: Dummydb.categorylist[0]["categoryname"],
                         ),
                       ));
                 });
@@ -92,7 +94,7 @@ class _ResultscreenState extends State<Resultscreen> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: ColorConstants.white,
+                  color: ColorConstants.maincolor,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -102,9 +104,9 @@ class _ResultscreenState extends State<Resultscreen> {
                       children: [
                         CircleAvatar(
                             radius: 30,
-                            backgroundColor: Colors.black,
+                            backgroundColor: ColorConstants.black,
                             child: Icon(Icons.replay,
-                                color: ColorConstants.white)),
+                                color: ColorConstants.maincolor)),
                         SizedBox(width: 20),
                         Text("RETRY",
                             style: TextStyle(color: ColorConstants.black)),
@@ -124,7 +126,7 @@ class _ResultscreenState extends State<Resultscreen> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Homescreen(),
+                        builder: (context) => Categoryscreen(),
                       ));
                 });
               },
@@ -133,7 +135,7 @@ class _ResultscreenState extends State<Resultscreen> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: ColorConstants.white,
+                  color: ColorConstants.maincolor,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -145,9 +147,9 @@ class _ResultscreenState extends State<Resultscreen> {
                             radius: 30,
                             backgroundColor: Colors.black,
                             child: Icon(Icons.replay,
-                                color: ColorConstants.white)),
+                                color: ColorConstants.maincolor)),
                         SizedBox(width: 20),
-                        Text("OTHER SECTIONS",
+                        Text("OTHER Categories",
                             style: TextStyle(color: ColorConstants.black)),
                       ],
                     ),

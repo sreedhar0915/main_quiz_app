@@ -47,7 +47,7 @@ class _QuizscreenState extends State<Quizscreen> {
 
   void starttimer() {
     remainingtime = 30;
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    timer = Timer.periodic(Duration(seconds: 2), (timer) {
       setState(() {
         if (remainingtime > 0) {
           remainingtime--;
@@ -87,17 +87,19 @@ class _QuizscreenState extends State<Quizscreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: LinearPercentIndicator(
-          width: 300,
-          lineHeight: 20,
-          percent: (currentindex + 1) / categorylist.length,
-          center: Text(
-            "${((currentindex + 1) / categorylist.length * 100).toStringAsFixed(1)}%",
+        title: Center(
+          child: LinearPercentIndicator(
+            width: 200,
+            lineHeight: 20,
+            percent: (currentindex + 1) / categorylist.length,
+            center: Text(
+              "${((currentindex + 1) / categorylist.length * 100).toStringAsFixed(1)}%",
+            ),
+            backgroundColor: ColorConstants.white,
+            progressColor: ColorConstants.maincolor,
+            barRadius: Radius.circular(10),
+            animation: true,
           ),
-          backgroundColor: Colors.grey[300],
-          progressColor: Colors.blue,
-          barRadius: Radius.circular(10),
-          animation: true,
         ),
         actions: [
           Padding(
@@ -106,7 +108,7 @@ class _QuizscreenState extends State<Quizscreen> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
-                    color: Colors.grey)),
+                    color: ColorConstants.maincolor)),
           ),
         ],
       ),
@@ -118,7 +120,7 @@ class _QuizscreenState extends State<Quizscreen> {
               alignment: Alignment.center,
               children: [
                 CircleAvatar(
-                  backgroundColor: ColorConstants.red,
+                  backgroundColor: ColorConstants.maincolor,
                   radius: 30,
                   child: CircularProgressIndicator(
                     value: remainingtime / 30,
@@ -143,7 +145,7 @@ class _QuizscreenState extends State<Quizscreen> {
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: ColorConstants.grey,
+                        color: ColorConstants.maincolor,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -159,7 +161,9 @@ class _QuizscreenState extends State<Quizscreen> {
                         categorylist[currentindex]["answerindex"])
                       Center(
                         child: Lottie.asset(
-                            "Assets/Animations/Animation - 1729829786990.json"),
+                            height: 100,
+                            "Assets/Animations/Animation - 1729829786990.json",
+                            fit: BoxFit.contain),
                       ),
                   ],
                 ),
@@ -200,10 +204,10 @@ class _QuizscreenState extends State<Quizscreen> {
                                         categorylist[currentindex]["options"]
                                             [optionindex],
                                         style: TextStyle(
-                                            color: ColorConstants.white)),
+                                            color: ColorConstants.maincolor)),
                                     Spacer(),
                                     Icon(Icons.circle_outlined,
-                                        color: ColorConstants.grey),
+                                        color: ColorConstants.maincolor),
                                   ],
                                 ),
                               ),
@@ -224,7 +228,7 @@ class _QuizscreenState extends State<Quizscreen> {
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: ColorConstants.maincolor,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(color: Colors.grey)),
                   child: Center(
@@ -254,7 +258,7 @@ class _QuizscreenState extends State<Quizscreen> {
         return ColorConstants.red;
       }
     } else {
-      return ColorConstants.grey;
+      return ColorConstants.maincolor;
     }
   }
 }
