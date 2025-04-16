@@ -341,11 +341,13 @@ class _ProfilescreenState extends State<Profilescreen> {
                         SizedBox(height: 30),
                         InkWell(
                           onTap: () {
-                            if (_formKey.currentState!.validate()) {
-                              Username = Namecontroller.text;
-                              Phonenumber = Phonenumbercontroller.text;
-                            }
-                            Navigator.pop(context);
+                            setState(() {
+                              if (_formKey.currentState!.validate()) {
+                                Username = Namecontroller.text;
+                                Phonenumber = Phonenumbercontroller.text;
+                              }
+                              Navigator.pop(context);
+                            });
                           },
                           child: Container(
                             height: 50,

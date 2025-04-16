@@ -74,49 +74,49 @@ class _ResultscreenState extends State<Resultscreen> {
                     fontSize: 25,
                     color: ColorConstants.yellow)),
           ),
-          SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: InkWell(
-              onTap: () {
-                setState(() {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Quizscreen(
-                          item: Dummydb.categorylist[0]["categoryname"],
-                        ),
-                      ));
-                });
-              },
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: ColorConstants.maincolor,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                            radius: 30,
-                            backgroundColor: ColorConstants.black,
-                            child: Icon(Icons.replay,
-                                color: ColorConstants.maincolor)),
-                        SizedBox(width: 20),
-                        Text("RETRY",
-                            style: TextStyle(color: ColorConstants.black)),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // SizedBox(height: 30),
+          // Padding(
+          //   padding: const EdgeInsets.all(20),
+          //   child: InkWell(
+          //     onTap: () {
+          //       setState(() {
+          //         Navigator.pushReplacement(
+          //             context,
+          //             MaterialPageRoute(
+          //               builder: (context) => Quizscreen(
+          //                 item: Dummydb.categorylist[0]["categoryname"],
+          //               ),
+          //             ));
+          //       });
+          //     },
+          //     child: Container(
+          //       height: 50,
+          //       width: double.infinity,
+          //       decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(10),
+          //         color: ColorConstants.maincolor,
+          //       ),
+          //       child: Padding(
+          //         padding: const EdgeInsets.all(10),
+          //         child: Center(
+          //           child: Row(
+          //             mainAxisAlignment: MainAxisAlignment.center,
+          //             children: [
+          //               CircleAvatar(
+          //                   radius: 30,
+          //                   backgroundColor: ColorConstants.black,
+          //                   child: Icon(Icons.replay,
+          //                       color: ColorConstants.maincolor)),
+          //               SizedBox(width: 20),
+          //               Text("RETRY",
+          //                   style: TextStyle(color: ColorConstants.black)),
+          //             ],
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
           SizedBox(height: 30),
           Padding(
             padding: const EdgeInsets.all(20),
