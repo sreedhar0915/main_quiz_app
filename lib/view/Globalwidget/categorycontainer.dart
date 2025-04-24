@@ -20,7 +20,12 @@ class Categorycontainer extends StatelessWidget {
         height: 300,
         width: 200,
         decoration: BoxDecoration(
-          color: const Color(0xFF677CE6),
+          gradient: LinearGradient(
+            colors: [Colors.red.shade500, Colors.blue.shade500],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          //color: const Color(0xFF677CE6),
           border: Border.all(color: ColorConstants.maincolor),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), bottomRight: Radius.circular(20)),

@@ -1,11 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:main_quiz_app/Utilis/color_constants.dart';
-import 'package:main_quiz_app/main.dart';
 import 'package:main_quiz_app/view/DummyDB.dart';
 import 'package:main_quiz_app/view/Globalwidget/categorycontainer.dart';
 import 'package:main_quiz_app/view/Profilescreen/Profilescreen.dart';
 import 'package:main_quiz_app/view/Quizscreen/Quizscreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Categoryscreen extends StatefulWidget {
   const Categoryscreen({super.key});
@@ -15,6 +15,20 @@ class Categoryscreen extends StatefulWidget {
 }
 
 class _CategoryscreenState extends State<Categoryscreen> {
+  String username = "";
+  @override
+  void initState() {
+    super.initState();
+    loadUserData();
+  }
+
+  Future<void> loadUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      username = prefs.getString('name') ?? 'No Data Stored';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,15 +139,15 @@ class _CategoryscreenState extends State<Categoryscreen> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Hi,$Username",
+            Text("Hi,$username",
                 style: TextStyle(
-                    color: ColorConstants.blue,
+                    color: ColorConstants.maincolor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text("Let's make this day productive",
                 style: TextStyle(
-                    color: ColorConstants.blue,
+                    color: ColorConstants.maincolor,
                     fontSize: 15,
                     fontWeight: FontWeight.bold))
           ],

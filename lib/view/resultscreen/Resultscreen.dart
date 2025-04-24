@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:main_quiz_app/Utilis/color_constants.dart';
 import 'package:main_quiz_app/view/DummyDB.dart';
-import 'package:main_quiz_app/view/Homescreen/Categoryscreen.dart';
+import 'package:main_quiz_app/view/Categoryscreen/Categoryscreen.dart';
 import 'package:main_quiz_app/view/Quizscreen/Quizscreen.dart';
 
 class Resultscreen extends StatefulWidget {
